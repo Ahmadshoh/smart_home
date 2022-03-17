@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UniversalServer.Model;
 using UniversalServer.ViewModels;
 
 namespace UniversalServer
@@ -23,7 +24,7 @@ namespace UniversalServer
     {
         public MainWindow()
         {
-           
+
             InitializeComponent();
             this.DataContext = new MainViewModel();
         }

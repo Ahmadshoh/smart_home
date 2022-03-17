@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -61,7 +62,9 @@ namespace UniversalServer.Model
         {
             string query = "INSERT INTO wetterwerte " +
                 "(temperatur, datetime, humidity, druck, sender_ip) " +
-                "VALUES(" + t + ", " + dt + ", " + h + ", " + p + ", " + ipa + ")";
+                "VALUES('" + t.Value + "', '" + dt.ToString("yyyy-MM-dd H:mm:ss") + "', '" + h.Value + "', '" + p.Value + "', '" + ipa + "')";
+
+            Console.WriteLine(query);
 
             //open connection
             if (this.openConnection() == true)
