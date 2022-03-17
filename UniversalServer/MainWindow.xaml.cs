@@ -23,6 +23,7 @@ namespace UniversalServer
     {
         public MainWindow()
         {
+           
             InitializeComponent();
             this.DataContext = new MainViewModel();
         }
