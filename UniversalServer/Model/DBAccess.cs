@@ -62,15 +62,18 @@ namespace UniversalServer.Model
         {
             string query = "INSERT INTO wetterwerte " +
                 "(temperatur, datetime, humidity, druck, sender_ip) " +
-                "VALUES('" + t.Value + "', '" + dt.ToString("yyyy-MM-dd H:mm:ss") + "', '" + h.Value + "', '" + p.Value + "', '" + ipa + "')";
-
-            Console.WriteLine(query);
+                "VALUES(@temperatur, @datetime, @humidity, @druck, @sender_ip)";    
 
             //open connection
             if (this.openConnection() == true)
             {
                 //create command and assign the query and connection from the constructor
                 MySqlCommand cmd = new MySqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@temperatur", t.Value);
+                cmd.Parameters.AddWithValue("@datetime", dt.ToString("yyyy-MM-dd H:mm:ss"));
+                cmd.Parameters.AddWithValue("@humidity", h.Value);
+                cmd.Parameters.AddWithValue("@druck", p.Value);
+                cmd.Parameters.AddWithValue("@sender_ip", ipa);
 
                 //Execute command
                 cmd.ExecuteNonQuery();
